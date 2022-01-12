@@ -3,7 +3,6 @@ package LeetCode.ReverseInteger;
 class Solution {
 	public int reverse(int x) {
 		StringBuilder sb = new StringBuilder();
-
 		if(x==Integer.MIN_VALUE) sb.append((long)(Integer.MAX_VALUE)+1);
 		else sb.append(Math.abs(x));
 
