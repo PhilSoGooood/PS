@@ -21,10 +21,4 @@ class Solution {
 		}
 		return sb.toString();
 	}
-
-	public static void main(String[] args) {
-		Solution solution = new Solution();
-		String[] strs = {"a"};
-		System.out.println(solution.longestCommonPrefix(strs));
-	}
 }
