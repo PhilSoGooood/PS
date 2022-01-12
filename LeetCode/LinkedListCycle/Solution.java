@@ -14,13 +14,13 @@ class ListNode {
 }
 
 public class Solution {
-	List<ListNode> check = new ArrayList<>();
+	List<Integer> check = new ArrayList<>();
 	public boolean hasCycle(ListNode head) {
 		ListNode cur = head;
 
 		while(cur != null){
-			if(check.contains(cur)) return true;
-			check.add(cur);
+			if(check.contains(cur.val)) return true;
+			check.add(cur.val);
 			cur = cur.next;
 		}
 
