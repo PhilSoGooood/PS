@@ -2,7 +2,7 @@ package Programmers.모의고사;
 
 import java.util.ArrayList;
 
-public class Solution {
+class Solution {
 	public static int[] solution(int[] answers) {
 		int[] correct = new int[3];
 		ArrayList<Integer> list = new ArrayList<>();

@@ -1,7 +1,7 @@
 package Programmers.이상한_문자_만들기;
 
 
-public class Solution {
+class Solution {
 	public static String solution(String s) {
 		StringBuilder answer = new StringBuilder();
 		boolean check = false;
