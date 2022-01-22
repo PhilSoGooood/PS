@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 /*
-BOJ10876 중복 빼고 정렬하기
+BOJ10867 중복 빼고 정렬하기
  */
 public class Main {
 	public static void main(String[] args) throws IOException {
