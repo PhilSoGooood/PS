@@ -20,7 +20,6 @@ public class Main {
 			}
 			if(whiteNum == 0) return new int[] {0, 1};
 			else  if(blueNum == 0) return new int[] {1, 0};
-
 			return new int[] {whiteNum, blueNum};
 		}
 
