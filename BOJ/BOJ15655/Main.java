@@ -1,4 +1,4 @@
-package BOJ.BOJ15654;
+package BOJ.BOJ15655;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,23 +9,19 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 class Main {
-	public static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-	public static void solution(int k, int N, int M, int[] arr, int[] numbers, boolean[] isUsed) throws IOException {
+	public static void solution(int k, int start, int N, int M, int[] arr, int[] numbers) throws IOException {
 		if(k == M){
-			for(int number : arr){
+			for(int number : arr)
 				bw.write(number + " ");
-			}
 			bw.write("\n");
 			return;
 		}
 
-		for(int i=0; i<N; i++){
-			if(isUsed[i]) continue;
+		for(int i=start; i < N; i++){
 			arr[k] = numbers[i];
-			isUsed[i] = true;
-			solution(k+1, N, M, arr, numbers, isUsed);
-			isUsed[i] = false;
+			solution(k+1, i+1, N, M, arr, numbers);
 		}
 	}
 	public static void main(String[] args) throws IOException {
@@ -37,17 +33,18 @@ class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int[] numbers = new int[N];
 		int[] arr = new int[M];
-		boolean[] isUsed = new boolean[N];
 
 		for(int i=0; i<N; i++){
 			numbers[i] = Integer.parseInt(st.nextToken());
 		}
-
 		Arrays.sort(numbers);
-
-		solution(0, N, M, arr, numbers, isUsed);
+		solution(0, 0, N, M, arr, numbers);
 		bw.flush();
 		bw.close();
 		br.close();
 	}
 }
+
+
+
+
