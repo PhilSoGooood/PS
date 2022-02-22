@@ -12,21 +12,21 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main {
-	static Set<String> set = new LinkedHashSet<>();
+	static StringBuilder sb = new StringBuilder();
 	public static void solution(int k, int N, int M, int[] arr, int[] numbers) throws IOException {
 		if(k == M){
-			StringBuilder sb = new StringBuilder();
 			for (int number : arr) {
 				sb.append(number).append(" ");
 			}
 			sb.append("\n");
-			set.add(sb.toString());
 			return;
 		}
-
+		int prev = -1;
 		for(int i=0; i<N; i++){
+			if(prev == numbers[i]) continue;
 			arr[k] = numbers[i];
 			solution(k+1, N, M, arr, numbers);
+			prev = numbers[i];
 		}
 	}
 	public static void main(String[] args) throws IOException {
@@ -43,9 +43,7 @@ public class Main {
 		}
 		Arrays.sort(numbers);
 		solution(0, N, M, arr, numbers);
-		for (String str : set) {
-			bw.write(str);
-		}
+		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
 		br.close();
