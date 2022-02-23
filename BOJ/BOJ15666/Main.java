@@ -1,4 +1,4 @@
-package BOJ.BOJ15665;
+package BOJ.BOJ15666;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static StringBuilder sb = new StringBuilder();
-	public static void solution(int k, int N, int M, int[] arr, int[] numbers) throws IOException {
+	public static void solution(int k, int N, int M, int[] arr, int[] numbers, int start) throws IOException {
 		if(k == M){
 			for (int number : arr) {
 				sb.append(number).append(" ");
@@ -19,10 +19,10 @@ public class Main {
 			return;
 		}
 		int prev = -1;
-		for(int i=0; i<N; i++){
+		for(int i=start; i<N; i++){
 			if(prev == numbers[i]) continue;
 			arr[k] = numbers[i];
-			solution(k+1, N, M, arr, numbers);
+			solution(k+1, N, M, arr, numbers, i);
 			prev = numbers[i];
 		}
 	}
@@ -39,7 +39,7 @@ public class Main {
 			numbers[i] = Integer.parseInt(st.nextToken());
 		}
 		Arrays.sort(numbers);
-		solution(0, N, M, arr, numbers);
+		solution(0, N, M, arr, numbers, 0);
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
