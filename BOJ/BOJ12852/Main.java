@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 	static int[] result;
@@ -26,40 +24,32 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
 		result = new int[N + 1];
-		List<Integer>[] listArr = new List[N + 1];
-		listArr[0] = new ArrayList<>();
-		listArr[1] = new ArrayList<>();
-		listArr[1].add(1);
+		int[] path = new int[N+1];
+
 		for (int i = 2; i < N + 1; i++) {
 			int index;
 			if(i % 3 == 0 && i % 2 == 0){
 				index = getIndex(i);
 				result[i] = result[index] + 1;
-				listArr[i] = new ArrayList<>();
-				listArr[i].addAll(listArr[index]);
-				listArr[i].add(i);
+				path[i] = index;
 			} else if(i % 3 == 0){
 				index = getIndex(i/3, i-1);
 				result[i] = result[index] + 1;
-				listArr[i] = new ArrayList<>();
-				listArr[i].addAll(listArr[index]);
-				listArr[i].add(i);
+				path[i] = index;
 			} else if(i % 2 == 0){
 				index = getIndex(i/2, i-1);
 				result[i] = result[index] + 1;
-				listArr[i] = new ArrayList<>();
-				listArr[i].addAll(listArr[index]);
-				listArr[i].add(i);
+				path[i] = index;
 			} else {
 				result[i] = result[i-1] + 1;
-				listArr[i] = new ArrayList<>();
-				listArr[i].addAll(listArr[i-1]);
-				listArr[i].add(i);
+				path[i] = i-1;
 			}
 		}
 		bw.write(result[N] + "\n");
-		for(int i=listArr[N].size()-1; i>=0; i--){
-			bw.write(listArr[N].get(i) + " ");
+		int index = N;
+		while (index != 0){
+			bw.write(index + " ");
+			index = path[index];
 		}
 		bw.flush();
 		bw.close();
