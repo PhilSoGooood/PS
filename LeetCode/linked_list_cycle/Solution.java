@@ -1,4 +1,4 @@
-package LeetCode.LinkedListCycle;
+package LeetCode.linked_list_cycle;
 
 import java.util.ArrayList;
 import java.util.List;
