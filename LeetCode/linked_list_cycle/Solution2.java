@@ -1,4 +1,4 @@
-package LeetCode.LinkedListCycle;
+package LeetCode.linked_list_cycle;
 
 /*
 fast 는 한번에 두칸씩, slow 는 한번에 한칸씩 이동해서 만나는 경우 싸이클이 존재.

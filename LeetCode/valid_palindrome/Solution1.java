@@ -3,7 +3,7 @@ package LeetCode.valid_palindrome;
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class Solution1 {
 	public boolean isPalindrome(String s) {
 		List<Character> list = new ArrayList<>();
 		for (int i = 0; i < s.length(); i++) {
