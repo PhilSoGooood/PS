@@ -1,10 +1,8 @@
 package BOJ.BOJ1676;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 /*
 BOJ1676 팩토리얼 0의 개수
@@ -13,23 +11,17 @@ BOJ1676 팩토리얼 0의 개수
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
-		long answer = 0;
-
-		for (int i = 2; i <= N; i++) {
-			if (i % 5 == 0) {
-				int tmp = i;
-				while(tmp % 5 == 0) {
-					tmp /= 5;
-					answer++;
-				}
+		int fiveCount = 0;
+		int num;
+		for (int i = 5; i <= N; i+=5) {
+			num = i;
+			while (num % 5 == 0) {
+				fiveCount++;
+				num /= 5;
 			}
 		}
-		bw.write(answer + " ");
-		bw.flush();
-		bw.close();
-		br.close();
+		System.out.println(fiveCount);
 	}
 }
 
