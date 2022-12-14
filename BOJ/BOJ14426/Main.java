@@ -25,7 +25,7 @@ public class Main {
 				String object = strings.get(j);
 				if (object.length() < prefix.length())
 					continue;
-				if (prefix.equals(object.substring(0, prefix.length()))) {
+				if (object.startsWith(prefix)) {
 					answer++;
 					break;
 				}
