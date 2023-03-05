@@ -5,38 +5,24 @@ import java.util.Queue;
 
 class MyStack {
     private final Queue<Integer> queue;
-    private final Queue<Integer> subQueue;
 
     public MyStack() {
         queue = new ArrayDeque<>();
-        subQueue = new ArrayDeque<>();
     }
 
     public void push(int x) {
         queue.add(x);
+        for (int i = 1; i < queue.size(); i++) {
+            queue.add(queue.poll());
+        }
     }
 
     public int pop() {
-        while (queue.size() > 1) {
-            subQueue.add(queue.poll());
-        }
-        int num = queue.poll();
-        while (!subQueue.isEmpty()) {
-            queue.add(subQueue.poll());
-        }
-        return num;
+        return queue.remove();
     }
 
     public int top() {
-        while (queue.size() > 1) {
-            subQueue.add(queue.poll());
-        }
-        int num = queue.poll();
-        subQueue.add(num);
-        while (!subQueue.isEmpty()) {
-            queue.add(subQueue.poll());
-        }
-        return num;
+        return queue.peek();
     }
 
     public boolean empty() {
