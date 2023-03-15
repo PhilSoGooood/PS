@@ -5,44 +5,44 @@ import java.util.Arrays;
 class MyCircularQueue {
     private int[] arr;
     int st = 0;
-    int end = 0;
+    int end = -1;
+    int len = 0;
 
     public MyCircularQueue(int k) {
         arr = new int[k];
-        Arrays.fill(arr, -1);
     }
 
     public boolean enQueue(int value) {
-        if (st == end && arr[end] != -1) return false;
-        arr[end++] = value;
-        end %= arr.length;
+        if (isFull()) return false;
+        end = (end + 1) % arr.length;
+        arr[end] = value;
+        len++;
         return true;
     }
 
     public boolean deQueue() {
-        if (arr[st] == -1) return false;
-        arr[st++] = -1;
-        st %= arr.length;
+        if (isEmpty()) return false;
+        st = (st + 1) % arr.length;
+        len--;
         return true;
     }
 
     public int Front() {
+        if (isEmpty()) return -1;
         return arr[st];
     }
 
     public int Rear() {
-        if (end - 1 == -1) {
-            return arr[arr.length - 1];
-        }
-        return arr[end - 1];
+        if (isEmpty()) return -1;
+        return arr[end];
     }
 
     public boolean isEmpty() {
-        return arr[st] == -1;
+        return len == 0;
     }
 
     public boolean isFull() {
-        return st == end && arr[end] != -1;
+        return len == arr.length;
     }
 }
 
